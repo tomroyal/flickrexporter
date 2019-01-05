@@ -1,7 +1,6 @@
 <?php
 
-// get original url, title, desc, tags, privacy for all photos in flickr account
-// store in db for later use
+// get photosets from flickr account
 
 // flickr api key and secret
 $fak = '';

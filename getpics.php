@@ -75,23 +75,6 @@ function buildPicUrl($a_photo){
   return($pic_url);
 }
 
-function buildPicPriv($a_photo){
-  // convert multiple privacy settings to a single integer - 0 public, 1 friends, 2 family, 3 private
-  if ($a_photo->ispublic == 1){
-    $priv = 0;
-  }
-  else if ($a_photo->isfriend == 1){
-    $priv = 1;
-  }
-  else if ($a_photo->isfamily == 1){
-    $priv = 2;
-  }
-  else {
-    $priv = 3;
-  };
-  return($priv);
-}
-
 // work out number of pages to process
 $pics_proc = 0;
 $meta = getPhotos(50,1); // perpage, page
@@ -109,9 +92,7 @@ for ($this_page = 1; ($this_page <= $total_pages); $this_page++) {
       $pics_proc++;  
       // get original pic url
       $a_photo -> full_url = buildPicUrl($a_photo);
-      // create privacy integer
-      $a_photo_priv = buildPicPriv($a_photo);
-      //  now store all this in your database, and get that $a_photo URL via CURL  
+      //  now store the info from $a_photo in your database, and download $a_photo->full_url via CURL  
     }
 };       
 
